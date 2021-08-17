@@ -18,6 +18,6 @@ MonoBehaviour:
   IsSelected: 0
   BlockMaterial: {fileID: 2100000, guid: c3ee3c0185d06b449b118a6f4dd2ce2a, type: 2}
   PlatformMaterial: {fileID: 2100000, guid: 8be97620071a73e429c837769d7e5113, type: 2}
-  ShopImage: {fileID: 21300000, guid: ce2156e1277a23843a43d978cf34aa94, type: 3}
+  ShopImage: {fileID: 21300000, guid: a2e2a6b3fd8c9744dbafeb103a914c2f, type: 3}
   Bounciness: {fileID: 13400000, guid: c623a2d16553b404e859a111a5e71745, type: 2}
   BlockSound: {fileID: 8300000, guid: dff3348e62150494aa6cfd86dea49176, type: 3}

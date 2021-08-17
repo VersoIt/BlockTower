@@ -23,7 +23,21 @@ public class SnapScrolling : MonoBehaviour
     [Header("Prefabs")]
     [SerializeField] private GameObject _panelPrefab;
 
+    [SerializeField] private CurrencyCounter _currencyCounter;
+
+    public CurrencyCounter CurrencyCounter 
+    { 
+        get => _currencyCounter; 
+        private set => _currencyCounter = value; 
+    }
+
     [SerializeField] private Tower[] _towers;
+
+    public Tower this[int index]
+    {
+        get => _towers[index];
+        set => _towers[index] = value;
+    }
 
     private GameObject[] _panels;
 
@@ -71,6 +85,12 @@ public class SnapScrolling : MonoBehaviour
             _panels[index].GetComponentsInChildren<TextMeshProUGUI>()[1].text = _towers[index].Name;
             _panels[index].transform.GetChild(0).GetComponentInChildren<Image>().sprite = _towers[index].ShopImage;
 
+            var scroll = _panels[index].transform.GetChild(0).GetComponent<ScrollPanelTouchReceiever>();
+
+            scroll.CurrentIndex = index;
+            scroll.SnapScroll = this;
+
+
             if (!_towers[index].IsBought)
             {
                 _panels[index].GetComponentsInChildren<TextMeshProUGUI>()[0].text = $"<sprite=0>{_towers[index].Cost}";
@@ -85,8 +105,9 @@ public class SnapScrolling : MonoBehaviour
             {
                 _panels[index].transform.GetChild(1).GetComponentInChildren<Image>().color = new Color(0.1f, 0.5f, 0.2f, 1);
                 _panels[index].transform.GetChild(1).GetComponentInChildren<TextMeshProUGUI>().text = "¬€¡–¿ÕŒ";
+                _panels[index].transform.GetChild(2).gameObject.SetActive(true);
+                _panels[index].GetComponentInChildren<Outline>().effectColor = new Color(0.1f, 0.5f, 0.2f, 1);
             }
-
         }
 
     }
